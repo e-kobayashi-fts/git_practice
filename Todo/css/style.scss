@@ -39,7 +39,7 @@ $WhiteClr : #fff;
             &:hover{
                 color:$WhiteClr;
             }
-            &.addItem:hover{background:#007199;}
+            &.add:hover{background:#007199;}
             &.doneAll:hover{background:#006948;}
         }
     }
@@ -73,7 +73,7 @@ $WhiteClr : #fff;
                 }
             }
             & span{
-                width:200px;
+                width:50%;
                 display:inline-block;
                 padding:5px;
             }

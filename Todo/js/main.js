@@ -2,6 +2,9 @@
 let app = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
+    components:{
+        myComponent
+    },
     data(){
       return {
         // 使用するデータ
@@ -27,8 +30,6 @@ let app = new Vue({
             this.isChecked.forEach(index => {
                 that.todos[index].isDone = true;
             });
-            this.isChecked = [];//チェックされたindexの配列を初期化
-            console.log(this.todos);
         },
         isDonetoggle(index){
             //完了済みのタスクをTodoに戻す/未完了を完了にする
@@ -39,6 +40,7 @@ let app = new Vue({
             //splice(0)になるとindex0以降のすべてを消してしまうので、
             //範囲をindexから1要素分に設定してみる
             this.todos.splice(index,1);//todosからindexの項目を削除する
+            index = "";//処理が終わった時点で初期化
         }
     },
 });

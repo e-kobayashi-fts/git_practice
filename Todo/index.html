@@ -12,30 +12,28 @@
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.3.10/dist/vuetify.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css"><!--- 自由に弄るためのcss --->
     <script src="js/main.js" defer></script><!-- VueやVuetifyをいじるためのやつ -->
+    <script src="js/component.js"></script>
   </head>
   <body>
     <div id="app"><!-- 仮想DOM -->
       <!-- この中でVueの値を参照する -->
-      
       <h1>Todo List</h1>
       <div id="container" v-cloak>
         <input type="text" maxlength="20" v-model="newItem" placeholder="add Todo">
-        <button class="addItem" @click.prevent="addItem">追加</button>
+        <button class="add" @click.prevent="addItem">追加</button>
         <button class="doneAll" @click.prevent="doneAll">すべて完了</button>
       </div>
-   
       <ul>
         <li v-for="(todo,index) in todos" :key="index">
-          <input v-show="!todo.isDone" :value="value" v-model="isChecked" type="checkbox">
+          <input v-if="(todo.isDone === false)" :value="index" v-model="isChecked" type="checkbox">
           <span :class="{done: todo.isDone}">{{todo.item}}</span>
           <div class="btnBox">
-            <button class="complete" v-show="!todo.isDone" @click.prevent="isDonetoggle(index)">完了</button>
-            <button class="return" v-show="todo.isDone" @click.prevent="isDonetoggle(index)">Todoに戻す</button>
+            <button class="complete" v-if="(todo.isDone === false)" @click.prevent="isDonetoggle(index)">完了</button>
+            <button class="return" v-if="(todo.isDone === true)" @click.prevent="isDonetoggle(index)">Todoに戻す</button>
             <button class="delete" @click="deleteItem(index)">削除</button>
           </div>
         </li>
       </ul>
-
     </div>
   </body>
 </html>

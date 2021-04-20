@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
+$inputClr : #999;
+$BlackClr : #333;
+$WhiteClr : #fff;
+#app{
+    width:75%;
+    margin: 10px auto;
+    h1{
+        padding: 0.25em 0.5em;/*上下 左右の余白*/
+        color: #494949;/*文字色*/
+        background: transparent;/*背景透明に*/
+        border-left: solid 5px #7db4e6;/*左線*/
+    }
+    & button{
+        width:100px;
+        font-family: 'Noto Sans JP', sans-serif;
+        transition: All 0.5s;
+        &:focus{
+            outline: none;
+        }
+
+    }
+    & #container{
+      width: 100%;
+      margin:10px auto; 
+        & input{
+            width:70%;
+            border-bottom:1px solid $inputClr;
+            padding:5px;
+            &:focus{
+                outline: none;
+            }
+        }
+        & button{
+            //追加・完了ボタン
+            margin:10px auto;
+            box-shadow:0 0 0 0.5px $BlackClr;
+            color:$BlackClr;
+            &:hover{
+                color:$WhiteClr;
+            }
+            &.addItem:hover{background:#007199;}
+            &.doneAll:hover{background:#006948;}
+        }
+    }
+    ul{
+        list-style: none;
+        & li{
+            width:70%;
+            margin:5px;
+            & input{
+                width:13px;
+                margin:auto 0 auto 10px;
+                border:1px solid $inputClr;
+            }
+            & .btnBox{
+                width:45%;
+                display:inline-block;
+                padding:5px;
+                text-align:right;
+                & button{
+                    width:95px;
+                    margin:0 5px;
+                    box-shadow:0 0 0 0.5px $BlackClr;
+                    background-color:  $WhiteClr;
+                    color: $BlackClr;
+                    &:hover{
+                        color:$WhiteClr;
+                    }
+                    &.complete:hover{background: #ec6800;}
+                    &.return:hover{background:#00885a;}
+                    &.delete:hover{background:#ef857d;}        
+                }
+            }
+            & span{
+                width:200px;
+                display:inline-block;
+                padding:5px;
+            }
+        }
+    }
+}
+.done{
+    text-decoration: line-through;
+}
+[v-cloak]{
+    display: none;
+}

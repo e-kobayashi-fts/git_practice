@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList - Vuetifyなし</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.3.10/dist/vuetify.js" defer></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.5.55/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.3.10/dist/vuetify.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"><!--- 自由に弄るためのcss --->
+    <script src="js/main.js" defer></script><!-- VueやVuetifyをいじるためのやつ -->
+  </head>
+  <body>
+    <div id="app"><!-- 仮想DOM -->
+      <!-- この中でVueの値を参照する -->
+      
+      <h1>Todo List</h1>
+      <div id="container" v-cloak>
+        <input type="text" maxlength="20" v-model="newItem" placeholder="add Todo">
+        <button class="addItem" @click.prevent="addItem">追加</button>
+        <button class="doneAll" @click.prevent="doneAll">すべて完了</button>
+      </div>
+   
+      <ul>
+        <li v-for="(todo,index) in todos" :key="index">
+          <input v-show="!todo.isDone" :value="value" v-model="isChecked" type="checkbox">
+          <span :class="{done: todo.isDone}">{{todo.item}}</span>
+          <div class="btnBox">
+            <button class="complete" v-show="!todo.isDone" @click.prevent="isDonetoggle(index)">完了</button>
+            <button class="return" v-show="todo.isDone" @click.prevent="isDonetoggle(index)">Todoに戻す</button>
+            <button class="delete" @click="deleteItem(index)">削除</button>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </body>
+</html>

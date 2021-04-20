@@ -1,0 +1,124 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap");
+#app {
+  width: 75%;
+  margin: 10px auto;
+}
+
+#app h1 {
+  padding: 0.25em 0.5em;
+  /*上下 左右の余白*/
+  color: #494949;
+  /*文字色*/
+  background: transparent;
+  /*背景透明に*/
+  border-left: solid 5px #7db4e6;
+  /*左線*/
+}
+
+#app button {
+  width: 100px;
+  font-family: 'Noto Sans JP', sans-serif;
+  -webkit-transition: All 0.5s;
+  transition: All 0.5s;
+}
+
+#app button:focus {
+  outline: none;
+}
+
+#app #container {
+  width: 100%;
+  margin: 10px auto;
+}
+
+#app #container input {
+  width: 70%;
+  border-bottom: 1px solid #999;
+  padding: 5px;
+}
+
+#app #container input:focus {
+  outline: none;
+}
+
+#app #container button {
+  margin: 10px auto;
+  -webkit-box-shadow: 0 0 0 0.5px #333;
+          box-shadow: 0 0 0 0.5px #333;
+  color: #333;
+}
+
+#app #container button:hover {
+  color: #fff;
+}
+
+#app #container button.addItem:hover {
+  background: #007199;
+}
+
+#app #container button.doneAll:hover {
+  background: #006948;
+}
+
+#app ul {
+  list-style: none;
+}
+
+#app ul li {
+  width: 70%;
+  margin: 5px;
+}
+
+#app ul li input {
+  width: 13px;
+  margin: auto 0 auto 10px;
+  border: 1px solid #999;
+}
+
+#app ul li .btnBox {
+  width: 45%;
+  display: inline-block;
+  padding: 5px;
+  text-align: right;
+}
+
+#app ul li .btnBox button {
+  width: 95px;
+  margin: 0 5px;
+  -webkit-box-shadow: 0 0 0 0.5px #333;
+          box-shadow: 0 0 0 0.5px #333;
+  background-color: #fff;
+  color: #333;
+}
+
+#app ul li .btnBox button:hover {
+  color: #fff;
+}
+
+#app ul li .btnBox button.complete:hover {
+  background: #ec6800;
+}
+
+#app ul li .btnBox button.return:hover {
+  background: #00885a;
+}
+
+#app ul li .btnBox button.delete:hover {
+  background: #ef857d;
+}
+
+#app ul li span {
+  width: 200px;
+  display: inline-block;
+  padding: 5px;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+[v-cloak] {
+  display: none;
+}
+/*# sourceMappingURL=style.css.map */

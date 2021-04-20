@@ -1,0 +1,24 @@
+.v-form {
+  width: 80%;
+  border: 1px solid #999;
+  margin: 10px auto;
+  padding: 30px;
+}
+
+.v-form .v-text-field {
+  display: inline-block;
+  width: 80%;
+}
+
+.v-form .v-text-field :focus {
+  outline: none;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+[v-cloak] {
+  display: none;
+}
+/*# sourceMappingURL=vuetify.css.map */

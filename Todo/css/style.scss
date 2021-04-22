@@ -18,7 +18,6 @@ $WhiteClr : #fff;
         &:focus{
             outline: none;
         }
-
     }
     & #container{
       width: 100%;
@@ -39,8 +38,8 @@ $WhiteClr : #fff;
             &:hover{
                 color:$WhiteClr;
             }
-            &.add:hover{background:#007199;}
-            &.doneAll:hover{background:#006948;}
+            &.add-todo:hover{background:#007199;}
+            &.done-all:hover{background:#006948;}
         }
     }
     ul{
@@ -53,7 +52,7 @@ $WhiteClr : #fff;
                 margin:auto 0 auto 10px;
                 border:1px solid $inputClr;
             }
-            & .btnBox{
+            & .btn-box{
                 width:45%;
                 display:inline-block;
                 padding:5px;
@@ -67,13 +66,13 @@ $WhiteClr : #fff;
                     &:hover{
                         color:$WhiteClr;
                     }
-                    &.complete:hover{background: #ec6800;}
-                    &.return:hover{background:#00885a;}
-                    &.delete:hover{background:#ef857d;}        
+                    &.todo-complete:hover{background: #ec6800;}
+                    &.todo-return:hover{background:#00885a;}
+                    &.todo-deletion:hover{background:#ef857d;}        
                 }
             }
             & span{
-                width:50%;
+                width:200px;
                 display:inline-block;
                 padding:5px;
             }

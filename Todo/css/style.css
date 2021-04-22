@@ -53,11 +53,11 @@
   color: #fff;
 }
 
-#app #container button.add:hover {
+#app #container button.add-todo:hover {
   background: #007199;
 }
 
-#app #container button.doneAll:hover {
+#app #container button.done-all:hover {
   background: #006948;
 }
 
@@ -76,14 +76,14 @@
   border: 1px solid #999;
 }
 
-#app ul li .btnBox {
+#app ul li .btn-box {
   width: 45%;
   display: inline-block;
   padding: 5px;
   text-align: right;
 }
 
-#app ul li .btnBox button {
+#app ul li .btn-box button {
   width: 95px;
   margin: 0 5px;
   -webkit-box-shadow: 0 0 0 0.5px #333;
@@ -92,24 +92,24 @@
   color: #333;
 }
 
-#app ul li .btnBox button:hover {
+#app ul li .btn-box button:hover {
   color: #fff;
 }
 
-#app ul li .btnBox button.complete:hover {
+#app ul li .btn-box button.todo-complete:hover {
   background: #ec6800;
 }
 
-#app ul li .btnBox button.return:hover {
+#app ul li .btn-box button.todo-return:hover {
   background: #00885a;
 }
 
-#app ul li .btnBox button.delete:hover {
+#app ul li .btn-box button.todo-deletion:hover {
   background: #ef857d;
 }
 
 #app ul li span {
-  width: 50%;
+  width: 200px;
   display: inline-block;
   padding: 5px;
 }

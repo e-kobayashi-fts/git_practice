@@ -8,30 +8,43 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.3.10/dist/vuetify.js" defer></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.5.55/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.5.55/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.3.10/dist/vuetify.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css"><!--- 自由に弄るためのcss --->
+    <script src="js/component/addTodo.js"></script>
+    <script src="js/component/doneAll.js"></script>
+    <script src="js/component/todoItem.js"></script>
+    <script src="js/component/btnBox.js"></script>
     <script src="js/main.js" defer></script><!-- VueやVuetifyをいじるためのやつ -->
-    <script src="js/component.js"></script>
   </head>
   <body>
     <div id="app"><!-- 仮想DOM -->
       <!-- この中でVueの値を参照する -->
       <h1>Todo List</h1>
-      <div id="container" v-cloak>
-        <input type="text" maxlength="20" v-model="newItem" placeholder="add Todo">
-        <button class="add" @click.prevent="addItem">追加</button>
-        <button class="doneAll" @click.prevent="doneAll">すべて完了</button>
-      </div>
+      <!-- addTodoコンポーネント呼び出し -->
+      <!-- @[子コンポーネントのメソッドで指定したハンドル]="呼び出したい親メソッド" -->
+      <add-todo @add-item="addItem">
+        <!-- 名前付きslotはtemplateタグで呼ぶ(省略形 #[slotにつけた名前]) -->
+        <template #done-all>
+          <!-- slotで確保した場所にコンポーネントを呼ぶ -->
+          <done-all @done-all="doneAll"></done-all>
+        </template>
+      </add-todo>
       <ul>
-        <li v-for="(todo,index) in todos" :key="index">
-          <input v-if="(todo.isDone === false)" :value="index" v-model="isChecked" type="checkbox">
-          <span :class="{done: todo.isDone}">{{todo.item}}</span>
-          <div class="btnBox">
-            <button class="complete" v-if="(todo.isDone === false)" @click.prevent="isDonetoggle(index)">完了</button>
-            <button class="return" v-if="(todo.isDone === true)" @click.prevent="isDonetoggle(index)">Todoに戻す</button>
-            <button class="delete" @click="deleteItem(index)">削除</button>
-          </div>
+        <li v-for="(todo,index) in todos" :key="todo.id">
+          <!-- :todoでtodoインスタンスをバインドし、todoItemコンポーネントへ渡す -->
+          <todo-item :todo="todo">
+            <template #btn-box>
+              <btn-box
+                @complete-todo="completeTodo"
+                @todo-to-return="revertToTodo"
+                @delete-item="deleteItem"
+                :todo="todo"
+              >
+              </btn-box>
+            </template>
+          </todo-item>
         </li>
       </ul>
     </div>

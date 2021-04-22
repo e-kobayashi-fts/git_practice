@@ -3,44 +3,54 @@ let app = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
     components:{
-        myComponent
+        addTodo,     //Todo追加のテキストボックスやボタン、全て完了ボタンのコンポーネント
+        doneAll,
+        todoItem,   //追加されたTodo(完了/todoに戻す、削除)のコンポーネント
+        btnBox
     },
     data(){
       return {
         // 使用するデータ
-            newItem:'',             //追加用フォームbind用
-            todos:[],               //追加するTodo
-            isChecked:[]            //チェックされた配列のindex格納
+            newItem:'',  //新規Todoの入力内容
+            todos:[]     //Todo格納用配列
         }
     },
     methods:{
-        addItem(){
-            if(!this.newItem){return}
-            //渡された値をtodos配列に入れる
+        addItem(newItem){
+            //新規Todoの追加
+            if(!newItem){return} //未入力ならreturnする
             const todo = {
-                item:this.newItem,
-                isDone:false       //todo消化済みか否か
+                item:newItem,
+                isDone:false,       //todo消化済みか
+                isChecked:false     //チェックボックスがチェック済みか
             }
             this.todos.push(todo);//todosに格納
-            this.newItem='';//newItemを初期化
         },
         doneAll(){
-            //すべて完了ボタンを押下したときのうごき
-            const that = this;
-            this.isChecked.forEach(index => {
-                that.todos[index].isDone = true;
+            //チェックボックスでチェックが入ったものをまとめて完了にする
+            this.todos.forEach(todo => {
+                if(todo.isChecked){
+                    todo.isDone = true;
+                }
             });
         },
-        isDonetoggle(index){
-            //完了済みのタスクをTodoに戻す/未完了を完了にする
-            this.todos[index].isDone = !this.todos[index].isDone;
+        completeTodo(todo){
+            //未完了を完了にする
+            todo.isDone = true;
         },
-        deleteItem(index){
+        revertToTodo(todo){
+            //未完了に戻す
+            todo.isDone = false;
+            todo.isChecked = false; //チェックボックスの状態を戻す
+        },
+        deleteItem(todo){
             //Todoを消す
-            //splice(0)になるとindex0以降のすべてを消してしまうので、
-            //範囲をindexから1要素分に設定してみる
-            this.todos.splice(index,1);//todosからindexの項目を削除する
-            index = "";//処理が終わった時点で初期化
+            let index = this.todos.indexOf(todo);
+            if(index > -1){
+              //splice(0)になるとindex0以降の配列要素すべてを消してしまうので、
+              //範囲をindexから1要素分に設定
+              this.todos.splice(index,1);//todosからindexの項目を削除する
+            }
         }
-    },
+    }
 });

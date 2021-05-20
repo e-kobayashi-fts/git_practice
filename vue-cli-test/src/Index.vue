@@ -16,21 +16,21 @@
 </template>
 
 <script>
-import AddTodo from './components/AddTodo';
-import CompleteAll from './components/CompleteAll';
-import TodoItem from './components/TodoItem';
+  import AddTodo from './components/AddTodo';
+  import CompleteAll from './components/CompleteAll';
+  import TodoItem from './components/TodoItem';
 
-export default {
-  name: 'App',
-  components: {
-    AddTodo,
-    CompleteAll,
-    TodoItem,
-  },
-  data() {
-    return {
-      todos:[]
+  export default {
+    name: 'App',
+    components: {
+      AddTodo,
+      CompleteAll,
+      TodoItem,
+    },
+    data() {
+      return {
+        todos:[]
+      }
     }
-  }
-};
+  };
 </script>
